@@ -37,13 +37,16 @@ class Chatbox {
 
     onSendButton(chatbox) {
         var textField = chatbox.querySelector('input');
-        let text1 = textField.value
+        let text1 = textField.value;
         if (text1 === "") {
             return;
         }
 
+        textField.value = ''; // Clear the input field immediately
+
         let msg1 = { name: "User", message: text1 }
         this.messages.push(msg1);
+        this.updateChatText(chatbox);
 
         fetch($SCRIPT_ROOT + '/predict', {
             method: 'POST',
@@ -61,13 +64,15 @@ class Chatbox {
                 console.log('Parsed JSON:', r);
                 let msg2 = { name: 'Sam', message: r.answer };
                 this.messages.push(msg2);
-                this.updateChatText(chatbox)
-                textField.value = ''
+                setTimeout(() => {
+                    this.updateChatText(chatbox);
+                }, 500); // 500ms delay
             })
             .catch((error) => {
                 console.error('Error:', error);
-                this.updateChatText(chatbox)
-                textField.value = ''
+                setTimeout(() => {
+                    this.updateChatText(chatbox);
+                }, 500); // 500ms delay
             });
     }
 
