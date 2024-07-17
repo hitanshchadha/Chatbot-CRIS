@@ -22,7 +22,7 @@ html {
   );
   --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
   --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
-  --primary: #917c04
+  --primary: #917c04;
   ;
 }
 .container {
@@ -66,13 +66,14 @@ html {
 }
 
 .chatbox__button {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
   
 }
 
 .send__button {
   padding: 12px;
-  background-color: rgb(73, 73, 73);
+  background-color: #917c04;
   border: 2px solid black;
   border-radius: 10%;
   outline: none;
@@ -204,9 +205,12 @@ html {
   background: white;
   border: none;
   outline: none;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
-  border-bottom-left-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  /* border-top-right-radius: 50px;
+  border-bottom-left-radius: 50px; */
   box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
