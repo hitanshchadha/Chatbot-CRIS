@@ -13,26 +13,40 @@ class Chatbox {
     display() {
         const { openButton, chatBox, sendButton } = this.args;
 
-        openButton.addEventListener('click', () => this.toggleState(chatBox));
+        openButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            this.toggleState(chatBox);
+        });
+
         sendButton.addEventListener('click', () => this.onSendButton(chatBox));
 
         const node = chatBox.querySelector('input');
         node.addEventListener("keyup", ({ key }) => {
             if (key === "Enter") {
-                this.onSendButton(chatBox)
+                this.onSendButton(chatBox);
             }
-        })
+        });
 
+        document.addEventListener('click', (event) => {
+            if (!chatBox.contains(event.target) && !openButton.contains(event.target)) {
+                this.closeChatbox(chatBox);
+            }
+        });
     }
 
     toggleState(chatbox) {
         this.state = !this.state;
 
         if (this.state) {
-            chatbox.classList.add('chatbox--active')
+            chatbox.classList.add('chatbox--active');
         } else {
-            chatbox.classList.remove('chatbox--active')
+            chatbox.classList.remove('chatbox--active');
         }
+    }
+
+    closeChatbox(chatbox) {
+        this.state = false;
+        chatbox.classList.remove('chatbox--active');
     }
 
     onSendButton(chatbox) {
@@ -44,7 +58,7 @@ class Chatbox {
 
         textField.value = ''; // Clear the input field immediately
 
-        let msg1 = { name: "User", message: text1 }
+        let msg1 = { name: "User", message: text1 };
         this.messages.push(msg1);
         this.updateChatText(chatbox);
 
@@ -80,9 +94,9 @@ class Chatbox {
         var html = '';
         this.messages.forEach(function (item) {
             if (item.name == "Sam") {
-                html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>'
+                html += '<div class="messages__item messages__item--visitor">' + item.message + '</div>';
             } else {
-                html += '<div class="messages__item messages__item--operator">' + item.message + '</div>'
+                html += '<div class="messages__item messages__item--operator">' + item.message + '</div>';
             }
         });
 
