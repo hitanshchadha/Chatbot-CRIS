@@ -14,11 +14,11 @@ body {
 
 *,
 html {
-  --primaryGradient: linear-gradient(93.12deg, #0e30c4 0.52%, #e7a41d 100%);
+  --primaryGradient: linear-gradient(93.12deg, #000000 0.52%, #3b3b3b 100%);
   --secondaryGradient: linear-gradient(
     268.91deg,
-    #0e30c4 -2.14%,
-    #e7a41d 99.69%
+    #000000 -2.14%,
+    #3b3b3b 99.69%
   );
   --primaryBoxShadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
   --secondaryBoxShadow: 0px -10px 15px rgba(0, 0, 0, 0.1);
@@ -44,7 +44,7 @@ html {
 .chatbox__support {
   display: flex;
   flex-direction: column;
-  background: black;
+  background: rgba(41, 41, 41, 0.744);
   width: 500px;
   height: 500px;
   z-index: -123456;
@@ -66,11 +66,11 @@ html {
 
 .chatbox__button {
   text-align: right;
+  
 }
 
 .send__button {
   padding: 12px;
-
   background-color: black;
   border: 2px solid black;
   border-radius: 45%;
@@ -110,7 +110,7 @@ html {
 }
 
 .chatbox__support {
-  background: #f9f9f9;
+  /* background: #f9f9f9; */
   height: 580px;
   width: 450px;
 
