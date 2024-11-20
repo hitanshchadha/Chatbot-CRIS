@@ -56,7 +56,7 @@ class Chatbox {
             return;
         }
 
-        textField.value = ''; // Clear the input field immediately
+        textField.value = ''; 
 
         let msg1 = { name: "User", message: text1 };
         this.messages.push(msg1);
